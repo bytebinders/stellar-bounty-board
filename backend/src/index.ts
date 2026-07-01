@@ -4,13 +4,9 @@ import path from "node:path";
 import { Worker } from "node:worker_threads";
 import { app } from "./app";
 import { logStructured } from "./logger";
+import path from "node:path";
+import { Worker } from "node:worker_threads";
 import { invalidateBountyCache } from "./services/bountyStore";
-import { validateGitHubWebhookSecret } from "./validation/webhookSecretValidation";
-import { validateEnv } from "./validation/validateEnv";
-
-// Validate critical environment variables before starting the server
-validateGitHubWebhookSecret();
-validateEnv();
 
 const port = Number(process.env.PORT ?? 3001);
 const keepAliveTimeout = Number(process.env.KEEP_ALIVE_TIMEOUT ?? 65000);
